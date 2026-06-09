@@ -214,6 +214,7 @@ require("lazy").setup({
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk" },
 				{ "<leader>f", group = "[F]ormat" }, -- Added for <leader>f (conform.nvim)
+				{ "<leader>F", group = "[F]ff finder" }, -- fff.nvim
 			})
 			-- visual mode
 			wk.add({
