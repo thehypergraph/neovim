@@ -213,8 +213,8 @@ require("lazy").setup({
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk" },
-				{ "<leader>f", group = "[F]ormat" }, -- Added for <leader>f (conform.nvim)
-				{ "<leader>F", group = "[F]ff finder" }, -- fff.nvim
+				{ "<leader>F", group = "[F]ormat" }, -- Added for <leader>f (conform.nvim)
+				{ "<leader>f", group = "[f]ff finder" }, -- fff.nvim
 			})
 			-- visual mode
 			wk.add({

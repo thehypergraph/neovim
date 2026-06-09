@@ -12,9 +12,33 @@ return {
 	-- Namespaced under <leader>F (capital, for FFF). <leader>f is the format
 	-- key and bare ff/fg would slow the `f` motion, so neither is used here.
 	keys = {
-		{ "<leader>Ff", function() require("fff").find_files() end, desc = "[F]ff: [F]ind files" },
-		{ "<leader>Fg", function() require("fff").live_grep() end, desc = "[F]ff: by [G]rep" },
-		{ "<leader>Fz", function() require("fff").live_grep({ grep = { modes = { "fuzzy", "plain" } } }) end, desc = "[F]ff: fu[Z]zy grep" },
-		{ "<leader>Fc", function() require("fff").live_grep({ query = vim.fn.expand("<cword>") }) end, desc = "[F]ff: [C]urrent word" },
+		{
+			"<leader>ff",
+			function()
+				require("fff").find_files()
+			end,
+			desc = "[F]ff: [F]ind files",
+		},
+		{
+			"<leader>fg",
+			function()
+				require("fff").live_grep()
+			end,
+			desc = "[F]ff: by [G]rep",
+		},
+		{
+			"<leader>fz",
+			function()
+				require("fff").live_grep({ grep = { modes = { "fuzzy", "plain" } } })
+			end,
+			desc = "[F]ff: fu[Z]zy grep",
+		},
+		{
+			"<leader>fc",
+			function()
+				require("fff").live_grep({ query = vim.fn.expand("<cword>") })
+			end,
+			desc = "[F]ff: [C]urrent word",
+		},
 	},
 }
