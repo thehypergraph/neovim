@@ -7,6 +7,9 @@ vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- .v files are V, not Verilog/Coq (Neovim otherwise guesses from file contents)
+vim.g.filetype_v = "v"
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -503,6 +506,7 @@ require("lazy").setup({
 						fallbackFlags = { "-std=c23" },
 					},
 				},
+				v_analyzer = {},
 				-- gopls = {},
 				-- pyright = {},
 				-- rust_analyzer = {},
@@ -785,7 +789,7 @@ require("lazy").setup({
 		config = function()
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 			local ensure_installed =
-				{ "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "zig" }
+				{ "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "zig", "v" }
 			require("nvim-treesitter").install(ensure_installed)
 
 			-- The main branch no longer manages highlighting/indent via modules;
