@@ -788,8 +788,29 @@ require("lazy").setup({
 		lazy = false,
 		config = function()
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+
+			-- Goose (https://github.com/aardappel/goose) is not in nvim-treesitter's
+			-- parser list; its grammar lives in the `tree-sitter/` dir of the compiler
+			-- repo, without a pre-generated parser.c, so it is generated on install.
+			vim.filetype.add({ extension = { goose = "goose" } })
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "TSUpdate",
+				callback = function()
+					require("nvim-treesitter.parsers").goose = {
+						install_info = {
+							url = "https://github.com/aardappel/goose",
+							revision = "94cc64daeabcae6f072dc1fe2b864acda5a001bc",
+							location = "tree-sitter",
+							generate = true,
+							generate_from_json = false,
+							queries = "tree-sitter/queries",
+						},
+					}
+				end,
+			})
+
 			local ensure_installed =
-				{ "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "zig", "v" }
+				{ "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "zig", "v", "goose" }
 			require("nvim-treesitter").install(ensure_installed)
 
 			-- The main branch no longer manages highlighting/indent via modules;
